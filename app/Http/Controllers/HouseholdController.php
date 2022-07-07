@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\HouseholdCreateRequest;
-use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\HouseholdEditRequest;
 use App\Models\Household;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class HouseholdController extends Controller
 {
@@ -20,7 +21,7 @@ class HouseholdController extends Controller
 
     public function store(HouseholdCreateRequest $request)
     {
-        $user = User::create($request->except('charity_department_id'));
+        $user = User::create($request->validated());
         $household = Household::create([
             'user_id' => $user->id,
             'charity_department_id' => $request->input('charity_department_id')
@@ -29,19 +30,19 @@ class HouseholdController extends Controller
         return api()->data($household)->get();
     }
 
-    public function update(UserEditRequest $request, Household $household)
+    public function update(HouseholdEditRequest $request, Household $household)
     {
-        $household->user()->update($request->validated());
+        $household->user()->update(Arr::except($request->validated(), 'charity_department_id'));
         return api()->data($household->load('user'))->get();
     }
 
     public function show(Household $household)
     {
-        $household = Household::with(
+        $household->load(
             'user',
             'charityDepartment',
             'families.user'
-        )->find($household->id);
+        );
 
         return api()->data($household)->get();
     }

@@ -12,27 +12,18 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 class HouseholdEditRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . request()->input('id'),
+            'father_name' => 'nullable|string',
+            'email' => 'nullable|email|unique:users,email,' . request()->input('id'),
             'gender' => 'required|string',
             'national_code' => 'required|numeric|unique:users,national_code,' . request()->input('id'),
             'birth_date' => 'nullable|date',
