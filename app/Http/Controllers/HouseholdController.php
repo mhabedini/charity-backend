@@ -7,7 +7,6 @@ use App\Http\Requests\HouseholdEditRequest;
 use App\Models\Household;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
 class HouseholdController extends Controller
 {
@@ -21,10 +20,11 @@ class HouseholdController extends Controller
 
     public function store(HouseholdCreateRequest $request)
     {
-        $user = User::create($request->validated());
+        $user = User::create($request->input('user'));
         $household = Household::create([
             'user_id' => $user->id,
-            'charity_department_id' => $request->input('charity_department_id')
+            'charity_department_id' => $request->input('charity_department_id'),
+            'description' => $request->input('description'),
         ]);
         $household = Household::with('user', 'charityDepartment')->find($household->id);
         return api()->data($household)->get();
@@ -32,7 +32,8 @@ class HouseholdController extends Controller
 
     public function update(HouseholdEditRequest $request, Household $household)
     {
-        $household->user()->update(Arr::except($request->validated(), 'charity_department_id'));
+        $household->user()->update($request->input('user'));
+        $household->update($request->only(['charity_department_id', 'description']));
         return api()->data($household->load('user'))->get();
     }
 

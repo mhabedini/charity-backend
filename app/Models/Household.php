@@ -25,10 +25,7 @@ class Household extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'user_id',
-        'charity_department_id',
-    ];
+    protected $guarded = ['id'];
 
     public function user()
     {

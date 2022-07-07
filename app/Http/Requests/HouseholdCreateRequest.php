@@ -20,22 +20,23 @@ class HouseholdCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'father_name' => 'nullable|string',
-            'email' => 'nullable|email|unique:users',
-            'gender' => 'required|string',
-            'national_code' => 'required|numeric|unique:users',
-            'birth_date' => 'nullable|date',
-            'phone' => 'nullable|string',
-            'is_sadat' => 'required|boolean',
+            'user.first_name' => 'required|string',
+            'user.last_name' => 'required|string',
+            'user.father_name' => 'nullable|string',
+            'user.email' => 'nullable|email|unique:users',
+            'user.gender' => 'required|string',
+            'user.national_code' => 'required|numeric|unique:users',
+            'user.birth_date' => 'nullable|date',
+            'user.phone' => 'nullable|string',
+            'user.is_sadat' => 'required|boolean',
+            'user.mobile' => 'nullable|string',
+            'user.marital_status' => 'nullable|required|boolean',
+            'user.job' => 'nullable|string',
+            'user.citizenship' => 'nullable|exists:countries,id',
+            'user.representative' => 'nullable|string',
+            'user.representative_mobile' => 'nullable|string',
             'charity_department_id' => 'nullable|exists:charity_departments,id',
-            'mobile' => 'nullable|string',
-            'marital_status' => 'nullable|required|boolean',
-            'job' => 'nullable|string',
-            'citizenship' => 'nullable|exists:countries,id',
-            'representative' => 'nullable|string',
-            'representative_mobile' => 'nullable|string',
+            'description' => 'nullable|string',
         ];
     }
 }

@@ -20,21 +20,23 @@ class HouseholdEditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'father_name' => 'nullable|string',
-            'email' => 'nullable|email|unique:users,email,' . request()->input('id'),
-            'gender' => 'required|string',
-            'national_code' => 'required|numeric|unique:users,national_code,' . request()->input('id'),
-            'birth_date' => 'nullable|date',
-            'phone' => 'nullable|string',
-            'is_sadat' => 'required|boolean',
+            'user' => 'nullable|array',
+            'user.first_name' => 'required|string',
+            'user.last_name' => 'required|string',
+            'user.father_name' => 'nullable|string',
+            'user.email' => 'nullable|email|unique:users,email,' . request()->input('user_id'),
+            'user.gender' => 'required|string',
+            'user.national_code' => 'required|numeric|unique:users,national_code,' . request()->input('user_id'),
+            'user.birth_date' => 'nullable|date',
+            'user.phone' => 'nullable|string',
+            'user.is_sadat' => 'required|boolean',
+            'user.mobile' => 'required|string',
+            'user.marital_status' => 'nullable|required|boolean',
+            'user.job' => 'nullable|string',
+            'user.citizenship' => 'nullable|exists:countries,id',
+            'user.representative' => 'nullable|string',
             'charity_department_id' => 'nullable|exists:charity_departments,id',
-            'mobile' => 'required|string',
-            'marital_status' => 'nullable|required|boolean',
-            'job' => 'nullable|string',
-            'citizenship' => 'nullable|exists:countries,id',
-            'representative' => 'nullable|string',
+            'description' => 'nullable|string',
         ];
     }
 }
