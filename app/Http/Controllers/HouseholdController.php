@@ -31,7 +31,8 @@ class HouseholdController extends Controller
 
     public function update(UserEditRequest $request, Household $household)
     {
-        $household->user()->update($request->except('charity_department_id'));
+        $household->user()->update($request->validated());
+        return api()->data($household->load('user'))->get();
     }
 
     public function show(Household $household)

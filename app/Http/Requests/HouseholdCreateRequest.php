@@ -44,6 +44,7 @@ class HouseholdCreateRequest extends FormRequest
             'job' => 'nullable|string',
             'citizenship' => 'nullable|exists:countries,id',
             'representative' => 'nullable|string',
+            'representative_mobile' => 'nullable|string',
         ];
     }
 }

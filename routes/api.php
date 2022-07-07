@@ -29,7 +29,7 @@ Route::middleware(['auth:api', 'role:admin'])->group(function () {
 
     Route::get('/households', 'HouseholdController@index');
     Route::post('/households', 'HouseholdController@store');
-    Route::post('/households/{household}', 'HouseholdController@update');
+    Route::patch('/households/{household}', 'HouseholdController@update');
     Route::get('/households/{household}', 'HouseholdController@show');
 
     Route::get('/family-members', 'FamilyController@index');
