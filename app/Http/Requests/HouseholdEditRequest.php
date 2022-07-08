@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Religion;
 use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -26,6 +27,7 @@ class HouseholdEditRequest extends FormRequest
             'user.father_name' => 'nullable|string',
             'user.email' => 'nullable|email|unique:users,email,' . request()->input('user_id'),
             'user.gender' => 'required|string',
+            'user.religion' => 'required|in:' . Religion::implode(','),
             'user.national_code' => 'required|numeric|unique:users,national_code,' . request()->input('user_id'),
             'user.birth_date' => 'nullable|date',
             'user.phone' => 'nullable|string',

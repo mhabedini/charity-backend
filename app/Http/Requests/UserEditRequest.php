@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Religion;
 use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -25,6 +26,7 @@ class UserEditRequest extends FormRequest
             'father_name' => 'nullable|string',
             'email' => 'required|email|unique:users,email,' . request()->input('id'),
             'password' => 'nullable',
+            'religion' => 'required|in:' . Religion::implode(','),
             'gender' => 'required|string',
             'is_sadat' => 'required|boolean',
             'national_code' => 'required|numeric|unique:users,national_code,' . request()->input('id'),

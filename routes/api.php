@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/religions', 'ReligionController@index');
 Route::post('/auth/login', 'AuthController@login');
 
 Route::middleware(['auth:api', 'role:admin'])->group(function () {

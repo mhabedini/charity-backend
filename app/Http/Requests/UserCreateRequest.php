@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Religion;
 use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -27,6 +28,7 @@ class UserCreateRequest extends FormRequest
             'password' => 'required',
             'gender' => 'required|string',
             'is_sadat' => 'required|boolean',
+            'religion' => 'required|in:' . Religion::implode(','),
             'national_code' => 'required|numeric|unique:users',
             'birth_date' => 'nullable|date',
             'phone' => 'nullable|string',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Religion;
 use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -20,13 +21,15 @@ class HouseholdCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'user' => 'array|required',
             'user.first_name' => 'required|string',
             'user.last_name' => 'required|string',
             'user.father_name' => 'nullable|string',
-            'user.email' => 'nullable|email|unique:users',
+            'user.email' => 'nullable|email|unique:users,email',
             'user.gender' => 'required|string',
-            'user.national_code' => 'required|numeric|unique:users',
+            'user.national_code' => 'required|numeric|unique:users,national_code',
             'user.birth_date' => 'nullable|date',
+            'user.religion' => 'required|in:' . Religion::implode(','),
             'user.phone' => 'nullable|string',
             'user.is_sadat' => 'required|boolean',
             'user.mobile' => 'nullable|string',
