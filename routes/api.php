@@ -12,6 +12,7 @@
 */
 
 Route::get('/religions', 'ReligionController@index');
+Route::get('/marital-statuses', 'MaritalStatusController@index');
 Route::post('/auth/login', 'AuthController@login');
 
 Route::middleware(['auth:api', 'role:admin'])->group(function () {
@@ -20,7 +21,7 @@ Route::middleware(['auth:api', 'role:admin'])->group(function () {
     Route::get('/user', 'UserController@profile');
     Route::get('/users', 'UserController@index');
     Route::post('/users', 'UserController@store');
-    Route::post('/users/{user}', 'UserController@update');
+    Route::patch('/users/{user}', 'UserController@update');
     Route::get('/users/{user}', 'UserController@show');
 
     Route::get('/charity-departments', 'CharityDepartmentController@index');

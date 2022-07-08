@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property-read int $id
+ * App\Models\Family
  *
+ * @property-read int $id
  * @property-read User $user
  * @property-read User $household
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Family newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Family newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Family query()
@@ -28,8 +28,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Family whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Family whereVersionCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Family whereVersionName($value)
- *
  * @mixin \Eloquent
+ * @property int $user_id
+ * @property int $household_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|Family onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Family whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Family whereHouseholdId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Family whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Family withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Family withoutTrashed()
  */
 class Family extends Model
 {

@@ -33,7 +33,7 @@ class HouseholdEditRequest extends FormRequest
             'user.phone' => 'nullable|string',
             'user.is_sadat' => 'required|boolean',
             'user.mobile' => 'required|string',
-            'user.marital_status' => 'nullable|required|boolean',
+            'user.marital_status' => 'nullable|required|string',
             'user.job' => 'nullable|string',
             'user.citizenship' => 'nullable|exists:countries,id',
             'user.representative' => 'nullable|string',

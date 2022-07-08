@@ -37,6 +37,7 @@ class UserController extends Controller
     public function update(UserEditRequest $request, User $user)
     {
         $user->update($this->userRequestWithHashedPassword($request));
+        return $user;
     }
 
     public function show(User $user)

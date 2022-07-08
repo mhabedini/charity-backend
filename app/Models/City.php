@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
+ * App\Models\City
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\City newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\City newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\City query()
@@ -23,8 +25,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\City whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\City whereVersionCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\City whereVersionName($value)
- *
  * @mixin \Eloquent
+ * @property int $id
+ * @property string $name
+ * @property int $state_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|City onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereStateId($value)
+ * @method static \Illuminate\Database\Query\Builder|City withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|City withoutTrashed()
  */
 class City extends Model
 {
