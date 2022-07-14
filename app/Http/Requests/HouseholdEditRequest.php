@@ -38,6 +38,7 @@ class HouseholdEditRequest extends FormRequest
             'user.citizenship' => 'nullable|exists:countries,id',
             'user.representative' => 'nullable|string',
             'charity_department_id' => 'nullable|exists:charity_departments,id',
+            'housing_situation' => 'nullable|string',
             'description' => 'nullable|string',
         ];
     }

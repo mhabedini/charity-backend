@@ -38,6 +38,7 @@ class HouseholdCreateRequest extends FormRequest
             'user.citizenship' => 'nullable|exists:countries,id',
             'user.representative' => 'nullable|string',
             'user.representative_mobile' => 'nullable|string',
+            'housing_situation' => 'nullable|string',
             'charity_department_id' => 'nullable|exists:charity_departments,id',
             'description' => 'nullable|string',
         ];

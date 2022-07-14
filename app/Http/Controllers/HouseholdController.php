@@ -25,15 +25,16 @@ class HouseholdController extends Controller
             'user_id' => $user->id,
             'charity_department_id' => $request->input('charity_department_id'),
             'description' => $request->input('description'),
+            'housing_situation' => $request->input('housing_situation'),
         ]);
-        $household = Household::with('user', 'charityDepartment')->find($household->id);
+        $household = $household->load('user', 'charityDepartment');
         return api()->data($household)->get();
     }
 
     public function update(HouseholdEditRequest $request, Household $household)
     {
         $household->user()->update($request->input('user'));
-        $household->update($request->only(['charity_department_id', 'description']));
+        $household->update($request->only(['charity_department_id', 'description', 'housing_situation']));
         return api()->data($household->load('user'))->get();
     }
 
