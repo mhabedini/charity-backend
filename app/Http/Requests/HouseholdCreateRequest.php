@@ -40,6 +40,7 @@ class HouseholdCreateRequest extends FormRequest
             'user.representative_mobile' => 'nullable|string',
             'housing_situation' => 'nullable|string',
             'charity_department_id' => 'nullable|exists:charity_departments,id',
+            'supervisor_status' => 'nullable|string',
             'description' => 'nullable|string',
         ];
     }
