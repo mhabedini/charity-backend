@@ -12,6 +12,7 @@
 */
 
 Route::get('/religions', 'ReligionController@index');
+Route::get('/countries', 'CountryController@index');
 Route::get('/marital-statuses', 'MaritalStatusController@index');
 Route::post('/auth/login', 'AuthController@login');
 

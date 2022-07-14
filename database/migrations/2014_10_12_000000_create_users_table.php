@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('marital_status')->nullable();
             $table->boolean('is_sadat')->default(false);
             $table->string('job')->nullable();
-            $table->bigInteger('citizenship')->nullable();
+            $table->foreignId('citizenship');
             $table->bigInteger('citizenship_code')->nullable();
             $table->string('representative')->nullable();
             $table->string('representative_mobile')->nullable();
@@ -39,6 +39,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('citizenship')->on('countries')->references('id')->restrictOnDelete();
         });
     }
 
