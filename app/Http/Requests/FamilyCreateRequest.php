@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Religion;
 use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -32,6 +33,7 @@ class FamilyCreateRequest extends FormRequest
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
+            'father_name' => 'required|string',
             'email' => 'nullable|email|unique:users',
             'gender' => 'required|string',
             'national_code' => 'required|numeric|unique:users',
@@ -40,10 +42,12 @@ class FamilyCreateRequest extends FormRequest
             'is_sadat' => 'required|boolean',
             'household_id' => 'nullable|exists:households,id',
             'mobile' => 'nullable|string',
-            'marital_status' => 'nullable|required|boolean',
+            'marital_status' => 'nullable|required|string',
+            'religion' => 'required|in:' . Religion::implode(','),
             'job' => 'nullable|string',
-            'citizenship' => 'nullable|exists:countries,id',
+            'citizenship' => 'exists:countries,id',
             'representative' => 'nullable|string',
+            'representative_mobile' => 'nullable|string',
         ];
     }
 }

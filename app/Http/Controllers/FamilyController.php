@@ -10,12 +10,11 @@ class FamilyController extends Controller
 {
     public function store(FamilyCreateRequest $request)
     {
-        $user = User::create($request->except('household_id'));
+        $user = User::create($request->safe()->except('household_id'));
         $family = Family::create([
             'user_id' => $user->id,
             'household_id' => $request->input('household_id')
-        ]);
-        $family = Family::with('user', 'household')->find($family->id);
+        ])->load(['user', 'household']);
         return api()->data($family)->get();
     }
 }

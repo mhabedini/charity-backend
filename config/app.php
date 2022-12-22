@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-    'api_url' => env('API_URL', 'http://api.localhost.com'),
+    'api_url' => env('API_URL', 'http://api.localhost'),
     'api_url_matcher' => env('API_URL_MATCHER', 'api.'),
 
 
