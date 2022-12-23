@@ -34,6 +34,7 @@ class HouseholdCreateRequest extends FormRequest
             'user.is_sadat' => 'required|boolean',
             'user.mobile' => 'nullable|string',
             'user.marital_status' => 'nullable|required|string',
+            'user.education' => 'nullable|string',
             'user.job' => 'nullable|string',
             'user.citizenship' => 'exists:countries,id',
             'user.representative' => 'nullable|string',

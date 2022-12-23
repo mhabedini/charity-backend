@@ -34,6 +34,7 @@ class UserEditRequest extends FormRequest
             'phone' => 'nullable|string',
             'mobile' => 'required|string',
             'marital_status' => 'nullable|required|string',
+            'education' => 'nullable|string',
             'job' => 'nullable|string',
             'citizenship' => 'nullable|exists:countries,id',
             'representative' => 'nullable|string',

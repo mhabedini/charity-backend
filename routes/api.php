@@ -11,9 +11,12 @@
 |
 */
 
+use App\Http\Controllers\EducationController;
+
 Route::get('/religions', 'ReligionController@index');
 Route::get('/countries', 'CountryController@index');
 Route::get('/marital-statuses', 'MaritalStatusController@index');
+Route::get('/education-degrees', [EducationController::class, 'index']);
 Route::post('/auth/login', 'AuthController@login');
 
 Route::middleware(['auth:api', 'role:admin'])->group(function () {

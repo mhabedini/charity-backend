@@ -48,8 +48,8 @@ class UserController extends Controller
     private function userRequestWithHashedPassword(Request $request)
     {
         if ($request->has('password') && $request->input('password') != null) {
-            return $request->except('password') + ['password' => Hash::make($request->input('password'))];
+            return $request->safe()->except('password') + ['password' => Hash::make($request->input('password'))];
         }
-        return $request->except('password');
+        return $request->safe()->except('password');
     }
 }
