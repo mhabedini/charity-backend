@@ -44,7 +44,8 @@ class HouseholdController extends Controller
         $household->load(
             'user',
             'charityDepartment',
-            'families.user'
+            'families.user',
+            'attachments'
         );
 
         return api()->data($household)->get();

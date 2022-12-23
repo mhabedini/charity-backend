@@ -10,10 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * App\Models\Household
  *
  * @property-read int $id
- *
- * * @property-read User $user
- * * @property-read CharityDepartment $charityDepartment
- * * @property-read Family[] $families
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Household newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Household newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Household query()
@@ -35,6 +31,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Household whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|Household withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Household withoutTrashed()
+ * @property string|null $housing_situation
+ * @property string|null $supervisor_status
+ * @property-read \App\Models\CharityDepartment|null $charityDepartment
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Family[] $families
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Household whereHousingSituation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Household whereSupervisorStatus($value)
  */
 class Household extends Model
 {
@@ -45,6 +48,11 @@ class Household extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(HouseholdAttachment::class);
     }
 
     public function charityDepartment()

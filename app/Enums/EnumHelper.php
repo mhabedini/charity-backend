@@ -30,7 +30,7 @@ trait EnumHelper
         $names = self::names();
         $values = self::values();
 
-        for ($i = 0; $i < count($names); $i++) {
+        for ($i = 0, $iMax = count($names); $i < $iMax; $i++) {
             $data[] = [
                 'label' => $values[$i],
                 'value' => $names[$i],

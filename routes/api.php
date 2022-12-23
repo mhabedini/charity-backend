@@ -34,6 +34,7 @@ Route::middleware(['auth:api', 'role:admin'])->group(function () {
     Route::post('/households', 'HouseholdController@store');
     Route::patch('/households/{household}', 'HouseholdController@update');
     Route::get('/households/{household}', 'HouseholdController@show');
+    Route::post('/households/{household}/attachments', 'HouseholdAttachmentController@store');
 
     Route::get('/family-members', 'FamilyController@index');
     Route::post('/family-members', 'FamilyController@store');
