@@ -20,7 +20,7 @@ class CreateAddressesTable extends Migration
             $table->unsignedBigInteger('district_id');
             $table->string('address');
             $table->string('postal_code');
-            $table->string('lat_long');
+            $table->string('lat_long')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

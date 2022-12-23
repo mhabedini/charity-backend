@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\District;
-use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

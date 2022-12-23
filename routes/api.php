@@ -28,6 +28,7 @@ Route::middleware(['auth:api', 'role:admin'])->group(function () {
     Route::get('/user', 'UserController@profile');
     Route::get('/users', 'UserController@index');
     Route::post('/users', 'UserController@store');
+    Route::post('/users/{user}/addresses', 'AddressController@store');
     Route::patch('/users/{user}', 'UserController@update');
     Route::get('/users/{user}', 'UserController@show');
 
