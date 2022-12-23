@@ -14,6 +14,9 @@
 use App\Http\Controllers\EducationController;
 
 Route::get('/religions', 'ReligionController@index');
+Route::get('/cities', 'CityController@index');
+Route::get('/states', 'StateController@index');
+Route::get('/districts', 'DistrictController@index');
 Route::get('/countries', 'CountryController@index');
 Route::get('/marital-statuses', 'MaritalStatusController@index');
 Route::get('/education-degrees', [EducationController::class, 'index']);
