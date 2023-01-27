@@ -15,7 +15,7 @@ return [
      * of your proxy (e.g. if using ELB or similar).
      *
      */
-    'proxies' => ['154.91.170.204'], // [<ip addresses>,], '*', '<ip addresses>,'
+    'proxies' => '*', // [<ip addresses>,], '*', '<ip addresses>,'
 
     /*
      * To trust one or more specific proxies that connect
